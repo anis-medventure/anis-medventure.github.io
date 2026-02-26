@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anis Medventure · portfolio</title>
+    <title>Mian Anis · medventure</title>
     <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -14,368 +14,353 @@
         }
 
         body {
-            background: #f2f6fc;  /* very light blue-white */
+            background: #eef4fa;  /* very soft blue-white */
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #1e2b3c;
+            color: #102a43;
             line-height: 1.5;
-            padding: 1.5rem 1rem;
+            min-height: 100vh;
             display: flex;
+            align-items: center;
             justify-content: center;
+            padding: 1.5rem;
         }
 
-        .container {
-            max-width: 1000px;
+        /* main card — pure white, spacious, minimal */
+        .card {
+            max-width: 860px;
             width: 100%;
-            background: white;
-            border-radius: 32px;
-            box-shadow: 0 20px 35px -8px rgba(0, 30, 60, 0.15);
+            background: #ffffff;
+            border-radius: 48px;
+            box-shadow: 0 25px 50px -12px rgba(0, 20, 40, 0.25);
             overflow: hidden;
+            transition: all 0.2s ease;
             border: 1px solid rgba(10, 38, 71, 0.1);
         }
 
-        /* navy header — logo colours */
-        .header-navy {
-            background-color: #0A2647;  /* deep navy */
-            padding: 1.75rem 2.5rem 1.25rem 2.5rem;
-            color: white;
+        /* header area: just a thin navy line as accent, no big color block */
+        .thin-stripe {
+            height: 6px;
+            background: #0A2647;  /* navy */
+            width: 100%;
         }
 
-        .logo-row {
+        .content {
+            padding: 2.8rem 3.2rem 3rem 3.2rem;
+        }
+
+        /* bigger profile picture */
+        .profile-wrapper {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .logo-img {
-            height: 50px;
-            width: auto;
-            max-width: 160px;
-            object-fit: contain;
-            background: white;
-            border-radius: 12px;
-            padding: 5px 12px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        }
-
-        /* fallback if logo image missing */
-        .logo-fallback {
-            background: white;
-            color: #0A2647;
-            font-weight: 700;
-            font-size: 1.4rem;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .profile-area {
-            display: flex;
-            align-items: flex-end;
-            gap: 2rem;
-            flex-wrap: wrap;
+            margin-bottom: 2.2rem;
         }
 
         .profile-pic-frame {
-            width: 128px;
-            height: 128px;
+            width: 210px;          /* much bigger */
+            height: 210px;
             border-radius: 50%;
             background: white;
-            padding: 5px;
-            box-shadow: 0 12px 20px -8px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 30px -8px rgba(10, 38, 71, 0.25);
+            margin-bottom: 1.2rem;
+            border: 3px solid white;
+            outline: 1px solid #e6edf6;
         }
 
         .profile-pic {
             width: 100%;
             height: 100%;
-            object-fit: cover;        /* this ensures full face visible, not cropped weird */
             border-radius: 50%;
-            border: 3px solid white;
-            background: #cbd5e1;
+            object-fit: cover;      /* head fully visible if image is well cropped */
+            background: #d9e2ef;
             display: block;
         }
 
-        .name-section h1 {
-            font-size: 2.4rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-
-        .name-section h1 span {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: #aac8ff;
-            margin-top: 0.2rem;
-        }
-
-        .pill-navy {
-            background: #1f3a6b;
-            display: inline-block;
-            padding: 0.3rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            border: 1px solid #3b6bb0;
-            margin-top: 0.4rem;
-        }
-
-        .content {
-            padding: 2.5rem;
-        }
-
-        .about-card {
-            background: #f5faff;
-            border-radius: 24px;
-            padding: 1.6rem 2rem;
-            margin-bottom: 2.5rem;
-            border-left: 6px solid #0A2647;
-            font-size: 1.05rem;
-        }
-
-        .grid-two {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .info-block {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 18px rgba(0,30,50,0.04);
-            border: 1px solid #eaf1fb;
-        }
-
-        .info-block h3 {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.3rem;
+        .name-large {
+            font-size: 2.8rem;
             font-weight: 600;
             color: #0A2647;
-            margin-bottom: 1.2rem;
-            border-bottom: 2px solid #e2ecfe;
-            padding-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+            text-align: center;
+            line-height: 1.2;
         }
 
-        .info-block h3 i {
+        .subhead {
+            font-size: 1.2rem;
+            color: #476788;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 0.2rem;
+            flex-wrap: wrap;
+        }
+
+        .badge-navy {
             background: #0A2647;
             color: white;
-            padding: 8px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            width: 2.2rem;
-            text-align: center;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            margin: 0.9rem 0;
-        }
-
-        .info-item i {
-            width: 24px;
-            color: #0A2647;
-            font-size: 1.1rem;
-        }
-
-        .skill-badge {
-            background: #e5f0ff;
-            color: #0A2647;
-            padding: 0.3rem 1rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid #b9d6ff;
-            display: inline-block;
-            margin: 0.2rem 0.3rem;
-        }
-
-        .social-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            margin: 2rem 0 1.5rem;
-        }
-
-        .social-link {
-            background: white;
-            border: 1px solid #dae6f5;
-            padding: 0.7rem 1.5rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 60px;
+            font-size: 1rem;
             font-weight: 500;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.15s;
-            text-decoration: none;
+            gap: 8px;
+        }
+
+        /* mission line – clean */
+        .mission-block {
+            background: #f4faff;
+            border-radius: 60px;
+            padding: 1rem 2rem;
+            margin: 2rem 0 2rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 500;
             color: #0A2647;
-            font-size: 1rem;
+            border: 1px solid #cde0f5;
         }
 
-        .social-link i {
-            font-size: 1.5rem;
+        .mission-block i {
+            margin: 0 8px;
+            color: #0A2647;
         }
 
-        .social-link:hover {
+        /* two column layout for minimal info */
+        .row-split {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .col {
+            flex: 1 1 220px;
+            background: #fafdff;
+            border-radius: 36px;
+            padding: 1.6rem 1.8rem;
+            border: 1px solid #e2edff;
+        }
+
+        .col h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0A2647;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid #ddeeff;
+            padding-bottom: 0.5rem;
+        }
+
+        .col h3 i {
+            background: #0A2647;
+            color: white;
+            border-radius: 10px;
+            padding: 6px;
+            font-size: 0.9rem;
+            width: 2rem;
+            text-align: center;
+        }
+
+        .col p {
+            margin: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .col i {
+            width: 24px;
+            color: #0A2647;
+        }
+
+        .skill-mini {
+            background: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            border: 1px solid #bed6ff;
+            display: inline-block;
+            margin: 0.2rem 0.25rem;
+            font-size: 0.85rem;
+        }
+
+        /* social links: simple, just icons + handles */
+        .social-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.2rem;
+            margin: 2.2rem 0 1.8rem;
+        }
+
+        .social-item {
+            background: white;
+            border: 1px solid #cfdef5;
+            border-radius: 80px;
+            padding: 0.7rem 1.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #102a43;
+            font-weight: 500;
+            transition: all 0.15s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .social-item i {
+            font-size: 1.6rem;
+        }
+
+        .social-item:hover {
             background: #0A2647;
             color: white;
             border-color: #0A2647;
-            transform: translateY(-2px);
         }
 
-        .mission-line {
-            background: #0A2647;
+        .social-item:hover i {
             color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 60px;
-            display: inline-block;
-            font-size: 1.3rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin: 1rem 0 0.5rem;
-            box-shadow: 0 6px 0 #05182e;
         }
 
-        .contact-row {
+        /* contact line minimal */
+        .contact-strip {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            background: #f3f9ff;
+            background: #f4faff;
             border-radius: 60px;
-            padding: 1rem 2rem;
-            margin: 2rem 0 0.5rem;
+            padding: 0.9rem 2rem;
+            margin: 2rem 0 1rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-strip span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cv-note {
+            background: white;
+            border-radius: 60px;
+            padding: 0.5rem 1.5rem;
+            border: 1px dashed #0A2647;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-top: 1rem;
         }
 
         hr {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(to right, #c7dfff, transparent);
-            margin: 2rem 0 1rem;
+            border: none;
+            border-top: 2px solid #e0edfc;
+            margin: 1.8rem 0 0.8rem;
         }
 
         footer {
             text-align: center;
-            color: #4f658d;
+            color: #6b85ac;
+            margin-top: 2rem;
             font-size: 0.9rem;
+        }
+
+        /* tiny image hint (will show at bottom) */
+        .image-note {
+            background: #fef6e6;
+            border-radius: 60px;
+            padding: 0.4rem 1.8rem;
+            font-size: 0.85rem;
+            color: #3b4e6b;
+            border: 1px dashed #0A2647;
             margin-top: 1.5rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- navy header with logo and profile -->
-    <div class="header-navy">
-        <div class="logo-row">
-            <!-- place your logo image as images/logo.jpeg -->
-            <img src="images/logo.jpeg" alt="Medventure logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
-            <div class="logo-fallback" style="display: none;"><i class="fas fa-stethoscope"></i> MEDVENTURE</div>
-            <span style="margin-left: auto; font-size: 0.9rem; background: rgba(255,255,255,0.1); padding: 0.4rem 1rem; border-radius: 40px;"><i class="fas fa-graduation-cap"></i> final year · KMU</span>
-        </div>
-
-        <div class="profile-area">
-            <div class="profile-pic-frame">
-                <!-- profile picture: place in images/profile.jpeg -->
-                <img src="images/profile.jpeg" alt="Mian Anis" class="profile-pic" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%2390a4c3\'%3E%3Ccircle cx=\'50\' cy=\'45\' r=\'30\'/%3E%3Ccircle cx=\'50\' cy=\'85\' r=\'35\'/%3E%3C/svg%3E'">
-            </div>
-            <div class="name-section">
-                <h1>Mian Anis ur Rahman <span>MBBS final year · student forever</span></h1>
-                <div class="pill-navy"><i class="fas fa-map-pin"></i> Abbottabad, Pakistan · Khyber Medical University</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- main content area (clean) -->
+<div class="card">
+    <div class="thin-stripe"></div>   <!-- just a navy line, no big color block -->
     <div class="content">
-        <!-- about / mission: short as requested -->
-        <div class="about-card">
-            <i class="fas fa-quote-left" style="color:#0A2647; opacity:0.2; font-size: 2rem; float: right;"></i>
-            <p><strong>anis.medventure</strong> — public health awareness & medical education. <br> 
-            Interests: myth busting · clinical practice · meded. Career goal: <em>to be a great student</em>.</p>
-            <div style="margin-top: 1rem;"><span class="mission-line">⚕️ LET'S GO ⚕️</span></div>
+
+        <!-- LARGE PROFILE PIC (as requested) -->
+        <div class="profile-wrapper">
+            <div class="profile-pic-frame">
+                <!-- place your image at images/profile.jpeg (make sure head/face is visible) -->
+                <img src="images/profile.jpeg" alt="Mian Anis" class="profile-pic" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%239ab0cc\'%3E%3Ccircle cx=\'50\' cy=\'45\' r=\'32\'/%3E%3Ccircle cx=\'50\' cy=\'90\' r=\'35\'/%3E%3C/svg%3E'">
+            </div>
+            <div class="name-large">Mian Anis ur Rahman</div>
+            <div class="subhead">
+                <span><i class="fas fa-graduation-cap" style="color:#0A2647;"></i> final year MBBS</span>
+                <span class="badge-navy"><i class="fas fa-stethoscope"></i> student forever</span>
+            </div>
         </div>
 
-        <!-- two column: education + clinical (compact) -->
-        <div class="grid-two">
-            <!-- education -->
-            <div class="info-block">
-                <h3><i class="fas fa-university"></i> Education</h3>
-                <div class="info-item"><i class="fas fa-degree"></i> MBBS (Medicine & Surgery) · final year</div>
-                <div class="info-item"><i class="fas fa-hospital"></i> Abbottabad International Medical Institute</div>
-                <div class="info-item"><i class="fas fa-globe"></i> Khyber Medical University, Pakistan</div>
-                <div class="info-item"><i class="fas fa-calendar-alt"></i> Expected graduation 2027</div>
-            </div>
-            <!-- clinical + skills (brief) -->
-            <div class="info-block">
-                <h3><i class="fas fa-stethoscope"></i> Clinical</h3>
-                <div class="info-item"><i class="fas fa-rotate-right"></i> Rotations: medicine · surgery · paeds · more</div>
-                <div class="info-item"><i class="fas fa-file"></i> Full CV on LinkedIn (see below)</div>
-                <div style="margin-top: 0.8rem;">
-                    <span class="skill-badge">medical education</span>
-                    <span class="skill-badge">myth busting</span>
-                    <span class="skill-badge">public awareness</span>
+        <!-- short bio / mission – LET'S GO -->
+        <div class="mission-block">
+            <i class="fas fa-quote-left"></i> anis.medventure · public health · myth busting · meded <i class="fas fa-quote-right"></i>
+            <div style="margin-top: 6px;"><strong style="background: #0A2647; color:white; padding:0.2rem 1.6rem; border-radius: 60px; display:inline-block;">⚕️ LET'S GO ⚕️</strong></div>
+        </div>
+
+        <!-- Two minimal columns -->
+        <div class="row-split">
+            <!-- left column: education + clinical compact -->
+            <div class="col">
+                <h3><i class="fas fa-book-open"></i> education</h3>
+                <p><i class="fas fa-university"></i> MBBS · final year</p>
+                <p><i class="fas fa-hospital"></i> Abbottabad Int'l Medical Institute</p>
+                <p><i class="fas fa-globe"></i> Khyber Medical University, Pakistan</p>
+                <p><i class="fas fa-calendar"></i> grad 2027</p>
+                <div style="margin-top: 1rem;">
+                    <span class="skill-mini">clinical rotations</span>
+                    <span class="skill-mini">internal medicine</span>
                 </div>
             </div>
-        </div>
-
-        <!-- second row: content creation + achievements (light) -->
-        <div class="grid-two">
-            <div class="info-block">
-                <h3><i class="fas fa-video"></i> Content</h3>
-                <div class="info-item"><i class="fas fa-tag"></i> public awareness, myth busting, meded</div>
-                <div class="info-item"><i class="fas fa-clock"></i> started early 2026 · Instagram/YouTube</div>
-                <div style="margin-top: 0.5rem;"><span class="skill-badge">reels</span><span class="skill-badge">shorts</span></div>
-            </div>
-            <div class="info-block">
-                <h3><i class="fas fa-medal"></i> Achievements</h3>
-                <div class="info-item"><i class="fas fa-trophy"></i> leadership, teaching, academic record</div>
-                <div class="info-item"><i class="fas fa-flask"></i> research: in progress (details LinkedIn)</div>
-                <div class="info-item"><i class="fas fa-award"></i> merit scholar (Khyber medical)</div>
+            <!-- right column: content + achievements -->
+            <div class="col">
+                <h3><i class="fas fa-microphone"></i> content</h3>
+                <p><i class="fas fa-play-circle"></i> public awareness · myth busting · meded</p>
+                <p><i class="fas fa-clock"></i> started 2026 · YouTube/IG</p>
+                <p><i class="fas fa-medal"></i> leadership, teaching, merit scholar</p>
+                <p><i class="fas fa-flask"></i> research (details on LinkedIn)</p>
             </div>
         </div>
 
-        <!-- SOCIAL MEDIA LINKS (direct from your input) -->
-        <div style="margin: 2rem 0 0.5rem;">
-            <h3 style="color:#0A2647; font-size: 1.4rem; font-weight:600; display: flex; gap:10px;"><i class="fab fa-instagram" style="background:#0A2647; color:white; padding:8px; border-radius:14px;"></i> connect @anis.medventure</h3>
-        </div>
-        <div class="social-row">
-            <a href="https://instagram.com/anis.medventure" target="_blank" class="social-link"><i class="fab fa-instagram" style="color:#d62976;"></i> anis.medventure</a>
-            <a href="https://facebook.com/profile.php?id=61581312958243" target="_blank" class="social-link"><i class="fab fa-facebook-f" style="color:#1877f2;"></i> Anis Medventure</a>
-            <a href="https://youtube.com/@Anis.Medventure" target="_blank" class="social-link"><i class="fab fa-youtube" style="color:#ff0000;"></i> @Anis.Medventure</a>
+        <!-- SOCIAL MEDIA — big icons + handles exactly from your links -->
+        <div class="social-cluster">
+            <a href="https://instagram.com/anis.medventure" target="_blank" class="social-item"><i class="fab fa-instagram" style="color:#d62976;"></i> anis.medventure</a>
+            <a href="https://facebook.com/profile.php?id=61581312958243" target="_blank" class="social-item"><i class="fab fa-facebook-f" style="color:#1877f2;"></i> Anis Medventure</a>
+            <a href="https://youtube.com/@Anis.Medventure" target="_blank" class="social-item"><i class="fab fa-youtube" style="color:#ff0000;"></i> @Anis.Medventure</a>
         </div>
 
-        <!-- featured videos hint (minimal) -->
-        <div style="background: #f5faff; border-radius: 40px; padding: 0.8rem 1.8rem; display: inline-block;">
-            <i class="fas fa-play-circle" style="color:#0A2647;"></i> featured shorts: myth busting · public awareness (on YouTube/IG)
+        <!-- featured videos hint (very light) -->
+        <div style="text-align: center; margin: 0.5rem 0 1rem;">
+            <span style="background:#ecf3ff; border-radius: 30px; padding: 0.3rem 1.8rem;"><i class="fas fa-film" style="color:#0A2647;"></i> latest: myth busting shorts on YouTube/IG</span>
         </div>
 
-        <!-- contact + CV note (clean) -->
-        <hr>
-        <div class="contact-row">
-            <span><i class="fas fa-envelope" style="background:#0A2647; color:white; padding:8px; border-radius:50%;"></i> anis.medventure@gmail.com</span>
+        <!-- CONTACT + CV row (super clean) -->
+        <div class="contact-strip">
+            <span><i class="fas fa-envelope" style="background:#0A2647; color:white; border-radius:50%; padding:6px;"></i> anis.medventure@gmail.com</span>
             <span><i class="fab fa-whatsapp" style="color:#0A2647;"></i> WhatsApp (on profile)</span>
             <span><i class="fab fa-linkedin" style="color:#0A2647;"></i> linkedin.com/in/anis-medventure</span>
         </div>
-        <div style="text-align: center; margin: 1rem 0 0.2rem;">
-            <span style="background:#f0f5ff; padding:0.4rem 1.5rem; border-radius:60px;"><i class="fas fa-file-pdf"></i> detailed CV – available on LinkedIn / request</span>
+
+        <div style="display: flex; justify-content: center;">
+            <div class="cv-note"><i class="fas fa-file-pdf" style="color:#b22222;"></i> full CV on LinkedIn / request</div>
         </div>
 
+        <hr>
         <footer>
-            <i class="fas fa-heart" style="color:#0A2647;"></i> student forever · public health · © 2026 Mian Anis ur Rahman · LET'S GO
+            <i class="fas fa-heart" style="color:#0A2647;"></i> public health awareness · © 2026 Mian Anis · LET'S GO
         </footer>
-    </div> <!-- end content -->
-</div> <!-- end container -->
 
-<!-- small instruction note for images (will be visible) -->
-<div style="max-width:1000px; margin: 1rem auto 0; background: #fef9e7; padding: 0.5rem 1.5rem; border-radius: 60px; font-size:0.9rem; border: 1px dashed #0A2647; color:#2b3b5c;">
-    📸 <strong>image paths:</strong> place profile pic at <code>images/profile.jpeg</code> (make sure head is fully visible – use square crop) · logo at <code>images/logo.jpeg</code>.
-</div>
+        <!-- tiny image helper note (visible only to you) -->
+        <div class="image-note">
+            📸 <strong>image paths:</strong> put profile picture (square, face visible) → <code>images/profile.jpeg</code> <br>
+            🖼️ place logo at <code>images/logo.jpeg</code> (not shown in this minimal version, but you can add later)
+        </div>
+    </div>  <!-- end content -->
+</div>  <!-- end card -->
 </body>
 </html>
