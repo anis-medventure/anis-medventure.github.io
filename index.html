@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mian Anis · portfolio</title>
-    <!-- Font Awesome 6 (free icons) -->
+    <title>Mian Anis ur Rahman · medventure</title>
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts for that premium feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,372 +16,610 @@
         }
 
         body {
-            background: #f0f4f8;  /* soft neutral background */
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #1e2b3c;
-            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+            background: #0c0f14;
+            color: #e4e9f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(45, 85, 255, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255, 70, 150, 0.05) 0%, transparent 50%),
+                        linear-gradient(135deg, #0a1929 0%, #1a2a3f 100%);
+            z-index: -2;
+        }
+
+        /* animated noise texture */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
             padding: 2rem 1.5rem;
+            position: relative;
+        }
+
+        /* glass-morphism card */
+        .hero-card {
+            background: rgba(18, 28, 40, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(100, 150, 255, 0.15);
+            border-radius: 48px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(65, 105, 225, 0.1) inset;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 40px 80px -15px rgba(0, 50, 150, 0.4);
+        }
+
+        /* logo area */
+        .logo-section {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
-        }
-
-        /* main container – subtle, clean, light */
-        .portfolio {
-            max-width: 1000px;
-            width: 100%;
-            background: #ffffff;
-            border-radius: 40px;
-            box-shadow: 0 30px 50px -20px rgba(0, 20, 40, 0.2);
-            overflow: hidden;
-            transition: all 0.2s ease;
-        }
-
-        /* thin color stripe – fresh accent (sage/teal instead of navy) */
-        .accent-stripe {
-            height: 6px;
-            background: #2F5C6F;   /* muted teal – calm and unique */
-            width: 100%;
-        }
-
-        .inner {
-            padding: 2.8rem 3rem;
-        }
-
-        /* profile area – bigger picture, clean */
-        .profile-row {
-            display: flex;
-            align-items: center;
-            gap: 2.5rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
-            margin-bottom: 2.5rem;
+            gap: 1.5rem;
         }
 
-        .pic-frame {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            background: #ffffff;
-            box-shadow: 0 15px 30px -8px rgba(47, 92, 111, 0.25);
-            border: 3px solid white;
-            outline: 1px solid #dde7f0;
-            flex-shrink: 0;
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .pic-frame img {
+        .real-logo {
+            height: 60px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 12px rgba(0, 100, 255, 0.3));
+            transition: all 0.3s ease;
+        }
+
+        .real-logo:hover {
+            filter: drop-shadow(0 8px 20px rgba(0, 160, 255, 0.6));
+            transform: scale(1.02);
+        }
+
+        .year-badge {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 20px -10px rgba(0,0,0,0.3);
+        }
+
+        .year-badge i {
+            color: #5f9eff;
+            margin-right: 8px;
+        }
+
+        /* profile section - big and bold */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .avatar-pulse {
+            position: relative;
+            width: 240px;
+            height: 240px;
+        }
+
+        @media (max-width: 500px) {
+            .avatar-pulse {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto;
+            }
+        }
+
+        .avatar-frame {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            object-fit: cover;       /* ensures full face if image is well cropped */
-            background: #cbd5e1;
+            background: linear-gradient(135deg, #3a6ea5, #9f7aea);
+            padding: 4px;
+            box-shadow: 0 20px 40px -10px rgba(0, 150, 255, 0.5), 0 0 0 2px rgba(255,255,255,0.05) inset;
+            animation: rotate-glow 8s infinite linear;
+        }
+
+        @keyframes rotate-glow {
+            0% { box-shadow: 0 20px 40px -10px rgba(0, 150, 255, 0.5), 0 0 0 2px rgba(255,255,255,0.05) inset; }
+            50% { box-shadow: 0 25px 50px -5px rgba(150, 70, 255, 0.7), 0 0 0 3px rgba(255,255,255,0.1) inset; }
+            100% { box-shadow: 0 20px 40px -10px rgba(0, 150, 255, 0.5), 0 0 0 2px rgba(255,255,255,0.05) inset; }
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.9);
+            transition: transform 0.4s ease;
             display: block;
         }
 
-        .name-title h1 {
-            font-size: 2.8rem;
-            font-weight: 600;
-            color: #1e3349;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
+        .avatar-img:hover {
+            transform: scale(1.02);
         }
 
-        .name-title .sub {
-            font-size: 1.2rem;
-            color: #2F5C6F;          /* matching stripe */
-            font-weight: 450;
-            margin-top: 0.4rem;
+        .name-block h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #ffffff, #bdd3ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .name-block h1 {
+                font-size: 3.2rem;
+            }
+        }
+
+        .glow-text {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #a0b8d4;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
-        .pill {
-            background: #e7f0f5;
-            padding: 0.3rem 1.2rem;
+        .super-badge {
+            background: linear-gradient(135deg, #2a4b7a, #1e2f4a);
+            padding: 0.4rem 1.6rem;
             border-radius: 60px;
-            font-size: 0.95rem;
-            color: #1e3349;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-weight: 600;
+            color: white;
+            border: 1px solid #3f6bb0;
+            box-shadow: 0 5px 15px rgba(0,50,150,0.3);
         }
 
-        /* section styling – minimal, elegant */
+        /* section styling - modern */
         .section {
-            margin: 2.5rem 0 1.8rem 0;
+            margin: 4rem 0 3rem;
         }
 
-        .section-title {
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            background: linear-gradient(135deg, #2a4b7a, #4a2b7a);
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(0,100,255,0.3);
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #c1d6ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* card grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(25, 35, 50, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(100, 160, 255, 0.15);
+            border-radius: 32px;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
+            box-shadow: 0 15px 30px -15px rgba(0,0,0,0.5);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(100, 180, 255, 0.4);
+            box-shadow: 0 30px 50px -15px #1a3f8c;
+            background: rgba(30, 45, 65, 0.8);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #5f9eff, #b78aff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .feature-card p, .feature-card li {
+            color: #b0c5e0;
+            margin: 0.8rem 0;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.5rem;
-            font-weight: 550;
-            color: #1e3349;
-            border-bottom: 2px solid #ddecf5;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
         }
 
-        .section-title i {
-            background: #2F5C6F;
-            color: white;
-            padding: 8px;
-            border-radius: 16px;
-            font-size: 1.1rem;
-            width: 2.4rem;
-            text-align: center;
+        .feature-card i.fa-circle-check {
+            color: #5f9eff;
         }
 
-        /* two column layout for some sections */
-        .grid-pair {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .info-card {
-            background: #f9fcff;
-            border-radius: 28px;
-            padding: 1.6rem 1.8rem;
-            border: 1px solid #e5f0fa;
-        }
-
-        .info-card p {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 0.8rem 0;
-        }
-
-        .info-card i {
-            width: 28px;
-            color: #2F5C6F;
-            font-size: 1.2rem;
-        }
-
-        .skill-tags {
+        /* social media section - WOW effect */
+        .social-reel {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 0.8rem;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
         }
 
-        .skill-tag {
-            background: white;
-            border: 1px solid #cde0f0;
-            padding: 0.3rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #1e3349;
-        }
-
-        .social-links {
+        .social-orbit {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(20, 35, 60, 0.7);
+            backdrop-filter: blur(10px);
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.2rem 0 0.8rem;
-        }
-
-        .social-btn {
-            background: white;
-            border: 1px solid #d4e2f0;
-            border-radius: 50px;
-            padding: 0.7rem 1.6rem;
-            display: inline-flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
             text-decoration: none;
-            color: #1e2b3c;
-            font-weight: 500;
-            transition: all 0.15s;
-            font-size: 0.95rem;
-        }
-
-        .social-btn i {
-            font-size: 1.4rem;
-        }
-
-        .social-btn:hover {
-            background: #2F5C6F;
             color: white;
-            border-color: #2F5C6F;
-            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        .linkedin-btn i {
-            color: #0a66c2;
+        .social-orbit::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), transparent 70%);
+            opacity: 0;
+            transition: 0.3s;
         }
-        .linkedin-btn:hover i {
+
+        .social-orbit:hover {
+            transform: scale(1.2) rotate(10deg);
+            border-color: #5f9eff;
+            box-shadow: 0 0 30px #3f7eff;
+        }
+
+        .social-orbit:hover::before {
+            opacity: 0.3;
+        }
+
+        .instagram { background: radial-gradient(circle at 30% 30%, #fccc63, #e4405f, #833ab4); }
+        .facebook { background: #1877f2; }
+        .youtube { background: #ff0000; }
+        .linkedin { background: #0a66c2; }
+
+        /* achievement list special */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: rgba(10, 25, 45, 0.6);
+            border-radius: 24px;
+            padding: 1.8rem 1rem;
+            text-align: center;
+            border: 1px solid rgba(255,215,0,0.2);
+            backdrop-filter: blur(8px);
+        }
+
+        .achievement-item i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, gold, #ffb347);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-item span {
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: block;
             color: white;
         }
 
-        .achievement-list {
-            list-style: none;
-        }
-        .achievement-list li {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin: 1rem 0;
-        }
-        .achievement-list i {
-            color: #2F5C6F;
-            width: 28px;
+        .achievement-item small {
+            color: #a5b9d4;
         }
 
-        .contact-row {
-            background: #f4fafd;
-            border-radius: 60px;
-            padding: 1rem 2rem;
+        /* contact strip */
+        .contact-crystal {
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 100px;
+            padding: 1.2rem 2.2rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin: 2.2rem 0 0.8rem;
-            font-size: 0.95rem;
+            margin: 3rem 0 1rem;
+            font-size: 1rem;
         }
 
-        .contact-row span {
+        .contact-crystal a {
+            color: #b5d0ff;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            transition: 0.2s;
         }
 
-        .cv-note {
-            background: white;
-            border: 1px dashed #2F5C6F;
-            border-radius: 60px;
-            padding: 0.5rem 1.5rem;
-            display: inline-block;
-            margin: 0.5rem 0;
+        .contact-crystal a:hover {
+            color: white;
+            text-shadow: 0 0 8px #3f7eff;
         }
 
-        hr {
-            border: 0;
-            border-top: 2px solid #e5f0fa;
-            margin: 2rem 0 1rem;
+        /* floating elements for WOW */
+        .floating-orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #2f6eff, #1a2f5a);
+            filter: blur(70px);
+            opacity: 0.2;
+            z-index: -1;
+            top: 10%;
+            right: -5%;
+            animation: float 20s infinite alternate;
+        }
+
+        .floating-orb2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 70% 70%, #b84aff, #1f2b5c);
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: -1;
+            bottom: -10%;
+            left: -10%;
+            animation: float 25s infinite alternate-reverse;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(5%, 10%) scale(1.2); }
         }
 
         footer {
             text-align: center;
-            color: #607d99;
-            margin-top: 2rem;
+            padding: 2rem 0 1rem;
+            color: #7f95b5;
             font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-top: 3rem;
+        }
+
+        /* mobile perfection */
+        @media (max-width: 500px) {
+            .hero-card {
+                padding: 1.8rem 1.2rem;
+            }
+            .contact-crystal {
+                border-radius: 40px;
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-<div class="portfolio">
-    <div class="accent-stripe"></div>   <!-- subtle teal stripe -->
-    <div class="inner">
-        <!-- PROFILE row with bigger picture -->
-        <div class="profile-row">
-            <div class="pic-frame">
-                <!-- profile image: place at images/profile.jpeg (make sure head is fully visible) -->
-                <img src="images/profile.jpeg" alt="Mian Anis" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\' fill=\'%239bb5d4\'%3E%3Ccircle cx=\'50\' cy=\'45\' r=\'35\'/%3E%3Ccircle cx=\'50\' cy=\'90\' r=\'35\'/%3E%3C/svg%3E'">
-            </div>
-            <div class="name-title">
-                <h1>Mian Anis ur Rahman</h1>
-                <div class="sub">
-                    <span><i class="fas fa-graduation-cap" style="color:#2F5C6F;"></i> final year MBBS</span>
-                    <span class="pill"><i class="fas fa-stethoscope"></i> Khyber Medical University</span>
+    <div class="floating-orb"></div>
+    <div class="floating-orb2"></div>
+    
+    <div class="container">
+        <div class="hero-card">
+            <!-- logo section with REAL LOGO -->
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <!-- place your real logo at images/logo.jpeg -->
+                    <img src="images/logo.jpeg" alt="MEDVENTURE" class="real-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 60\'%3E%3Crect width=\'200\' height=\'60\' fill=\'%231a2f48\' rx=\'30\'/%3E%3Ctext x=\'30\' y=\'40\' font-family=\'Arial\' font-size=\'24\' fill=\'%23ffffff\' font-weight=\'bold\'%3EMEDVENTURE%3C/text%3E%3C/svg%3E'">
+                </div>
+                <div class="year-badge">
+                    <i class="fas fa-star"></i> final year · khyber medical university · 2027
                 </div>
             </div>
-        </div>
 
-        <!-- ABOUT section (short) -->
-        <div class="section">
-            <div class="section-title"><i class="fas fa-user-pen"></i> about</div>
-            <div style="background: #f6fbfe; border-radius: 30px; padding: 1.3rem 2rem; color: #1f3a4f;">
-                <i class="fas fa-quote-left" style="color:#2F5C6F; opacity:0.4; margin-right:8px;"></i> 
-                anis.medventure — public health awareness & medical education. Passionate about myth busting, clinical practice, and meded. 
-                <span style="display:block; margin-top:8px;"><strong>Career goal:</strong> to be a great student, forever learning.</span>
-            </div>
-        </div>
-
-        <!-- EDUCATION & CLINICAL EXPERIENCE side by side -->
-        <div class="grid-pair">
-            <!-- EDUCATION card -->
-            <div class="info-card">
-                <p><i class="fas fa-university"></i> <strong>MBBS (Medicine & Surgery)</strong> · final year</p>
-                <p><i class="fas fa-building"></i> Abbottabad International Medical Institute</p>
-                <p><i class="fas fa-map-pin"></i> Abbottabad, Pakistan · Khyber Medical University</p>
-                <p><i class="fas fa-calendar-check"></i> Expected graduation 2027</p>
-            </div>
-            <!-- CLINICAL EXPERIENCE card -->
-            <div class="info-card">
-                <p><i class="fas fa-stethoscope"></i> Rotations: Internal Medicine, Surgery, Paediatrics</p>
-                <p><i class="fas fa-hospital-user"></i> Clinical internships (details on LinkedIn)</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">patient care</span>
-                    <span class="skill-tag">clinical rounds</span>
-                    <span class="skill-tag">OPD</span>
+            <!-- profile section with bigger picture -->
+            <div class="profile-grid">
+                <div class="avatar-pulse">
+                    <div class="avatar-frame">
+                        <!-- profile image: place at images/profile.jpeg (ensure face is clear) -->
+                        <img src="images/profile.jpeg" alt="Mian Anis" class="avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Mian+Anis&size=400&background=2a4b7a&color=fff&bold=true'">
+                    </div>
+                </div>
+                <div class="name-block">
+                    <h1>Mian Anis<br>ur Rahman</h1>
+                    <div class="glow-text">
+                        <i class="fas fa-graduation-cap"></i> MBBS final year
+                        <span class="super-badge"><i class="fas fa-stethoscope"></i> student forever</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- CONTENT CREATION TYPE & ACHIEVEMENTS (side by side) -->
-        <div class="grid-pair">
-            <!-- CONTENT CREATION -->
-            <div class="info-card">
-                <p><i class="fas fa-video"></i> <strong>public awareness · myth busting · medical education</strong></p>
-                <p><i class="fas fa-clock"></i> started creating: early 2026 (Instagram / YouTube)</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">reels</span>
-                    <span class="skill-tag">shorts</span>
-                    <span class="skill-tag">infographics</span>
+            <!-- ABOUT section -->
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-feather"></i></div>
+                    <h2>about</h2>
+                </div>
+                <div style="background: rgba(0,30,60,0.4); border-radius: 40px; padding: 2rem; border-left: 6px solid #3f7eff; font-size: 1.2rem; color: #d0e0ff;">
+                    <i class="fas fa-quote-left" style="color: #3f7eff; margin-right: 10px;"></i>
+                    anis.medventure — public health awareness, myth busting & medical education. 
+                    Passionate about clinical practice and making medicine accessible. 
+                    <strong>Career goal:</strong> to be a great student, forever learning.
                 </div>
             </div>
-            <!-- ACHIEVEMENTS (from file & linkedin) -->
-            <div class="info-card">
-                <ul class="achievement-list" style="list-style:none; padding-left:0;">
-                    <li><i class="fas fa-trophy"></i> leadership & teaching awards</li>
-                    <li><i class="fas fa-award"></i> great academic record (merit scholar)</li>
-                    <li><i class="fas fa-microscope"></i> research (in progress) – details LinkedIn</li>
-                    <li><i class="fas fa-star"></i> active contributor in med ed forums</li>
-                </ul>
+
+            <!-- EDUCATION & CLINICAL in awesome cards -->
+            <div class="card-grid">
+                <div class="feature-card">
+                    <div class="card-icon"><i class="fas fa-university"></i></div>
+                    <h3>education</h3>
+                    <p><i class="fa-regular fa-circle-check"></i> MBBS (Medicine & Surgery) · final year</p>
+                    <p><i class="fa-regular fa-circle-check"></i> Abbottabad Int'l Medical Institute</p>
+                    <p><i class="fa-regular fa-circle-check"></i> Khyber Medical University</p>
+                    <p><i class="fa-regular fa-circle-check"></i> Expected graduation 2027</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h3>clinical experience</h3>
+                    <p><i class="fa-regular fa-circle-check"></i> Internal Medicine rotation</p>
+                    <p><i class="fa-regular fa-circle-check"></i> Surgery rotation</p>
+                    <p><i class="fa-regular fa-circle-check"></i> Paediatrics rotation</p>
+                    <p><i class="fa-regular fa-circle-check"></i> Full details on LinkedIn</p>
+                </div>
             </div>
-        </div>
 
-        <!-- SOCIAL MEDIA LINKS (YouTube, Insta, FB + LinkedIn) -->
-        <div class="section" style="margin-top:1.8rem;">
-            <div class="section-title"><i class="fas fa-share-alt"></i> connect</div>
-            <div class="social-links">
-                <a href="https://instagram.com/anis.medventure" target="_blank" class="social-btn"><i class="fab fa-instagram" style="color:#d62976;"></i> anis.medventure</a>
-                <a href="https://facebook.com/profile.php?id=61581312958243" target="_blank" class="social-btn"><i class="fab fa-facebook-f" style="color:#1877f2;"></i> Anis Medventure</a>
-                <a href="https://youtube.com/@Anis.Medventure" target="_blank" class="social-btn"><i class="fab fa-youtube" style="color:#ff0000;"></i> @Anis.Medventure</a>
-                <a href="https://www.linkedin.com/in/mian-anis-ur-rahman/" target="_blank" class="social-btn linkedin-btn"><i class="fab fa-linkedin" style="color:#0a66c2;"></i> LinkedIn</a>
+            <!-- CONTENT CREATION & ACHIEVEMENTS -->
+            <div class="card-grid" style="margin-top: 1rem;">
+                <div class="feature-card">
+                    <div class="card-icon"><i class="fas fa-video"></i></div>
+                    <h3>content creation</h3>
+                    <p><i class="fa-regular fa-circle-check"></i> public awareness · myth busting · meded</p>
+                    <p><i class="fa-regular fa-circle-check"></i> started 2026 · Instagram/YouTube</p>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1rem;">
+                        <span style="background: #2a4b7a; padding: 0.3rem 1rem; border-radius: 30px;">reels</span>
+                        <span style="background: #2a4b7a; padding: 0.3rem 1rem; border-radius: 30px;">shorts</span>
+                        <span style="background: #2a4b7a; padding: 0.3rem 1rem; border-radius: 30px;">myth busting</span>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon"><i class="fas fa-medal"></i></div>
+                    <h3>achievements</h3>
+                    <p><i class="fa-regular fa-circle-check"></i> leadership & teaching awards</p>
+                    <p><i class="fa-regular fa-circle-check"></i> great academic record (merit scholar)</p>
+                    <p><i class="fa-regular fa-circle-check"></i> research in progress</p>
+                    <p><i class="fa-regular fa-circle-check"></i> active med ed contributor</p>
+                </div>
             </div>
-        </div>
 
-        <!-- CONTACT + CV note (minimal) -->
-        <div class="contact-row">
-            <span><i class="fas fa-envelope" style="background:#2F5C6F; color:white; border-radius:50%; padding:8px;"></i> anis.medventure@gmail.com</span>
-            <span><i class="fab fa-whatsapp" style="color:#2F5C6F;"></i> WhatsApp (on profile)</span>
-            <span><i class="fas fa-file-pdf" style="color:#b22222;"></i> CV on LinkedIn</span>
-        </div>
+            <!-- SOCIAL MEDIA LINKS - WOW effect -->
+            <div class="section" style="margin-top: 3rem;">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-globe"></i></div>
+                    <h2>connect · social</h2>
+                </div>
+                <div class="social-reel">
+                    <a href="https://instagram.com/anis.medventure" target="_blank" class="social-orbit instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/profile.php?id=61581312958243" target="_blank" class="social-orbit facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://youtube.com/@Anis.Medventure" target="_blank" class="social-orbit youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/mian-anis-ur-rahman/" target="_blank" class="social-orbit linkedin"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
 
-        <!-- optional featured note (not required but light) -->
-        <div style="text-align: center; margin-top:1.8rem;">
-            <span class="cv-note"><i class="fas fa-play-circle"></i> featured myth-busting shorts on YouTube/IG</span>
-        </div>
+            <!-- ACHIEVEMENTS extra shine -->
+            <div class="achievement-grid" style="margin: 2rem 0;">
+                <div class="achievement-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>leadership</span>
+                    <small>teaching awards</small>
+                </div>
+                <div class="achievement-item">
+                    <i class="fas fa-star"></i>
+                    <span>merit scholar</span>
+                    <small>academic excellence</small>
+                </div>
+                <div class="achievement-item">
+                    <i class="fas fa-flask"></i>
+                    <span>research</span>
+                    <small>ongoing projects</small>
+                </div>
+            </div>
 
-        <hr>
-        <footer>
-            © 2026 Mian Anis ur Rahman · MBBS final year · public health awareness
-        </footer>
+            <!-- CONTACT + CV -->
+            <div class="contact-crystal">
+                <a href="mailto:anis.medventure@gmail.com"><i class="fas fa-envelope"></i> anis.medventure@gmail.com</a>
+                <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp (on profile)</a>
+                <a href="https://www.linkedin.com/in/mian-anis-ur-rahman/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn / CV</a>
+            </div>
 
-        <!-- tiny helper for image placement (visible for you) -->
-        <div style="margin-top: 1.8rem; background: #fcf9f0; border-radius: 60px; padding: 0.5rem 1.5rem; font-size:0.85rem; text-align:center; border:1px dashed #2F5C6F;">
-            📸 <strong>profile image:</strong> save as <code>images/profile.jpeg</code> (square crop, face clearly visible). 
-            Background color: #2F5C6F (teal) & clean white.
+            <footer>
+                <i class="fas fa-heart" style="color: #ff6b9d;"></i> public health awareness · medical education · © 2026 Mian Anis
+            </footer>
         </div>
-    </div> <!-- end inner -->
-</div> <!-- end portfolio -->
+    </div>
+
+    <!-- image placement helper (only visible during dev) -->
+    <div style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #ccc; padding: 8px 16px; border-radius: 40px; font-size: 12px; backdrop-filter: blur(8px); z-index: 999;">
+        📸 place images: <code>images/profile.jpeg</code> (face visible) & <code>images/logo.jpeg</code>
+    </div>
 </body>
 </html>
