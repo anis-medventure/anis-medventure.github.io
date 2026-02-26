@@ -1,59 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Medical Student Portfolio</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mian Anis · medventure</title>
+    <!-- Font Awesome 6 (free) for crisp icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f8fafc;   /* soft white background */
+            color: #1e293b;               /* slate dark for text */
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* main navy container – logo colours: navy + white */
+        .navy-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 10px 30px -10px rgba(0, 30, 60, 0.15);
+            border-radius: 2rem 2rem 1rem 1rem;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 40, 80, 0.08);
+        }
+
+        /* header – navy deep */
+        .med-header {
+            background-color: #0A2647;    /* deep navy from logo */
+            padding: 2rem 2rem 1.8rem 2rem;
+            color: white;
+            position: relative;
+            border-bottom: 5px solid #e0f2fe;   /* subtle ice */
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo-emblem {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            background: white;
+            color: #0A2647;
+            font-size: 2rem;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+        }
+
+        .logo-text {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tagline-pill {
+            background: rgba(255,255,255,0.12);
+            padding: 0.5rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        .tagline-pill i {
+            margin-right: 6px;
+            color: #b3e5ff;
+        }
+
+        /* profile row */
+        .profile-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-pic-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 15px 25px -8px rgba(0,0,0,0.4);
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid white;
+            background: #e2e8f0;
+            /* replace with actual image: images/profile.jpeg (you'll place file there) */
+        }
+
+        .name-title h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .name-title h1 span {
+            font-weight: 300;
+            font-size: 1.5rem;
+            color: #a5c9ff;
+            display: block;
+        }
+
+        .student-badge {
+            display: inline-block;
+            background: #1e3a6b;
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            margin-top: 0.5rem;
+            font-weight: 500;
+            border: 1px solid #3b6bb0;
+            font-size: 0.95rem;
+        }
+
+        .student-badge i {
+            margin-right: 6px;
+            color: #ffd966;
+        }
+
+        /* main content card */
+        .content-card {
+            padding: 2.2rem 2rem;
+            background: #ffffff;
+        }
+
+        /* section titles */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #0A2647;       /* navy */
+            border-bottom: 3px solid #e5f0ff;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .section-title i {
+            background: #0A2647;
+            color: white;
+            padding: 8px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            width: 2.2rem;
+            text-align: center;
+        }
+
+        .bio-box {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-radius: 24px;
+            font-size: 1.1rem;
+            border-left: 6px solid #0A2647;
+            margin-bottom: 2rem;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,30,50,0.05);
+            border: 1px solid #e9f0f9;
+        }
+
+        .info-card p {
+            margin: 0.6rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card i {
+            width: 24px;
+            color: #0A2647;
+            font-size: 1.2rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 0.8rem;
+        }
+
+        .skill-tag {
+            background: #e7f0ff;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #0A2647;
+            border: 1px solid #b9d6ff;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .social-btn {
+            background: white;
+            border: 1px solid #d4e2f0;
+            color: #0A2647;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .social-btn i {
+            font-size: 1.5rem;
+        }
+
+        .social-btn:hover {
+            background: #0A2647;
+            color: white;
+            border-color: #0A2647;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 18px -8px rgba(10,38,71,0.3);
+        }
+
+        .youtube { background: #fef2f2; }
+        .instagram { background: #faf0ff; }
+        .facebook { background: #e8f0fe; }
+
+        .mission-strip {
+            background: #0A2647;
+            color: white;
+            padding: 1.2rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 0 #05182e;
+        }
+
+        footer {
+            background: #eef4fc;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            color: #1e3a5f;
+            border-top: 1px solid #cbdffc;
+            font-size: 0.95rem;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #b3d9ff, transparent);
+            margin: 2rem 0 1rem;
+        }
+
+        /* additional micro */
+        .stat-note {
+            font-size: 0.9rem;
+            color: #6c7a96;
+            margin-left: 6px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* for missing profile we show a silhouette */
+        .profile-pic {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2390a4c3"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
+            background-size: 50% auto;
+            background-repeat: no-repeat;
+            background-position: center 55%;
+            background-color: #cbd5e1;
+        }
+    </style>
 </head>
-
 <body>
+    <div class="navy-wrapper">
+        <!-- header navy area with logo -->
+        <div class="med-header">
+            <div class="logo-area">
+                <div class="logo-emblem">
+                    <div class="logo-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <span class="logo-text">MEDVENTURE</span>
+                </div>
+                <div class="tagline-pill">
+                    <i class="fas fa-quote-left"></i> student forever · LET'S GO
+                </div>
+            </div>
 
-<header>
-    <img src="images/profile.jpeg" class="profile">
-    <h1>Dr. Your Name</h1>
-    <p>Final Year MBBS Student | Medical Educator</p>
-</header>
+            <!-- profile row (info from file) -->
+            <div class="profile-row">
+                <div class="profile-pic-container">
+                    <!-- place your image at: images/profile.jpeg (relative path) -->
+                    <img src="images/profile.jpeg" alt="Mian Anis" class="profile-pic" onerror="this.style.background='#0A2647'; this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22 fill=%22%23cadfff%22><circle cx=%2250%22 cy=%2245%22 r=%2230%22/><circle cx=%2250%22 cy=%2285%22 r=%2235%22/></svg>';">
+                </div>
+                <div class="name-title">
+                    <h1>Mian Anis ur Rahman <span>MBBS final year</span></h1>
+                    <div class="student-badge">
+                        <i class="fas fa-graduation-cap"></i> Khyber Medical University · 2027
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<section>
-    <h2>About Me</h2>
-    <p>
-        I am a final year MBBS student passionate about medical education.
-        I create educational content to help medical students understand concepts easily.
-    </p>
-</section>
+        <!-- main content -->
+        <div class="content-card">
 
-<section>
-    <h2>Education</h2>
-    <p>MBBS – XYZ Medical College</p>
-    <p>Expected Graduation: 2026</p>
-</section>
+            <!-- about / short bio + mission -->
+            <div class="bio-box">
+                <i class="fas fa-quote-right" style="float:right; color:#0A2647; opacity:0.2; font-size:2.5rem;"></i>
+                <p><strong><i class="fas fa-hand-holding-heart" style="color:#0A2647;"></i> Welcome to anis.medventure</strong> — a space dedicated to public health awareness and medical education.</p>
+                <p style="margin-top:10px;">🧑‍⚕️ Medical interests: public awareness, myth busting, medical education, clinical practice.<br>
+                🎯 Career goal: <em>to be a great student</em> (always learning).</p>
+                <div style="margin-top:16px;"><span class="mission-strip"><i class="fas fa-flag-checkered"></i> LET'S GO</span></div>
+            </div>
 
-<section>
-    <h2>Clinical Experience</h2>
-    <ul>
-        <li>Internal Medicine Rotation</li>
-        <li>Surgery Rotation</li>
-        <li>Pediatrics Rotation</li>
-    </ul>
-</section>
+            <!-- two column: education + clinical (compact) -->
+            <div class="grid-2col">
+                <!-- education -->
+                <div class="info-card">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+                        <i class="fas fa-university" style="font-size: 1.8rem; background: #0A2647; color: white; padding: 10px; border-radius: 16px;"></i>
+                        <h3 style="font-size: 1.5rem;">Education</h3>
+                    </div>
+                    <p><i class="fas fa-degree"></i> <strong>MBBS (Medicine & Surgery)</strong> · final year</p>
+                    <p><i class="fas fa-hospital"></i> Abbottabad International Medical Institute</p>
+                    <p><i class="fas fa-globe"></i> Abbottabad, Pakistan · Khyber Medical University</p>
+                    <p><i class="fas fa-calendar-check"></i> Expected graduation 2027</p>
+                </div>
 
-<section>
-    <h2>Social Media</h2>
+                <!-- clinical experience (summary, points from linkedin) -->
+                <div class="info-card">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+                        <i class="fas fa-notes-medical" style="font-size: 1.8rem; background: #0A2647; color: white; padding: 10px; border-radius: 16px;"></i>
+                        <h3 style="font-size: 1.5rem;">Clinical</h3>
+                    </div>
+                    <p><i class="fas fa-stethoscope"></i> Rotations & internships — detailed CV on LinkedIn</p>
+                    <p><i class="fas fa-briefcase"></i> Internal Medicine · Surgery · Paeds · OPD</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">clinical skills</span>
+                        <span class="skill-tag">patient counseling</span>
+                        <span class="skill-tag">myth busting</span>
+                    </div>
+                </div>
+            </div>
 
-    <p><a href="https://youtube.com" target="_blank">YouTube</a></p>
-    <p><a href="https://instagram.com" target="_blank">Instagram</a></p>
-    <p><a href="https://facebook.com" target="_blank">Facebook</a></p>
+            <!-- content creation & skills row (2col) -->
+            <div class="grid-2col">
+                <div class="info-card">
+                    <h3><i class="fas fa-video" style="background: #0A2647; color:white; padding:6px; border-radius: 12px; margin-right:10px;"></i> Content creation</h3>
+                    <p><i class="fas fa-tag"></i> Public awareness, myth busting, medical education</p>
+                    <p><i class="fas fa-clock"></i> Started creating: early 2026 (Instagram / YouTube)</p>
+                    <div class="skill-tags">
+                        <span class="skill-tag">script writing</span>
+                        <span class="skill-tag">short videos</span>
+                        <span class="skill-tag">reel editing</span>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fas fa-microscope" style="background: #0A2647; color:white; padding:6px; border-radius:12px; margin-right:10px;"></i> Achievements & research</h3>
+                    <p><i class="fas fa-trophy"></i> leadership, teaching, great academic record <span class="stat-note">(details on LinkedIn)</span></p>
+                    <p><i class="fas fa-file-alt"></i> Research: not published yet — in progress</p>
+                    <p><i class="fas fa-award"></i> Scholarships: merit based (Khyber medical university)</p>
+                </div>
+            </div>
 
-</section>
+            <!-- social media presence (direct from links) -->
+            <div class="section-title"><i class="fab fa-instagram"></i> connect on social · #medventure</div>
+            <div class="social-links">
+                <a href="https://instagram.com/anis.medventure" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i> anis.medventure</a>
+                <a href="https://facebook.com/profile.php?id=61581312958243" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i> Anis Medventure</a>
+                <a href="https://youtube.com/@Anis.Medventure" target="_blank" class="social-btn youtube"><i class="fab fa-youtube"></i> @Anis.Medventure</a>
+            </div>
 
-<section>
-    <h2>Contact</h2>
-    <p>Email: your@email.com</p>
-</section>
+            <!-- featured videos placeholder (icons only) -->
+            <div style="margin: 2rem 0 0.5rem;">
+                <span style="background: #eef4ff; padding: 0.2rem 1.2rem; border-radius: 30px; font-weight:500;"><i class="fas fa-play-circle" style="color:#0A2647;"></i> featured videos (latest reels)</span>
+                <div style="display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; justify-content: start;">
+                    <i class="fab fa-youtube" style="font-size: 2.5rem; color:#a0b9da;"></i>
+                    <i class="fas fa-film" style="font-size: 2.5rem; color:#0A2647;"></i>
+                    <i class="fas fa-clapperboard" style="font-size: 2.5rem; color:#395886;"></i>
+                </div>
+                <p style="color:#64748b;">🎬 myth busting · public awareness shorts (visit channel)</p>
+            </div>
 
-<footer>
-    <p>© 2026 Your Name</p>
-</footer>
+            <!-- contact / CV line -->
+            <hr>
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+                <div>
+                    <i class="fas fa-envelope" style="background: #0A2647; color:white; padding:10px; border-radius: 50%;"></i>
+                    <strong style="margin-left: 8px;">anis.medventure@gmail.com</strong> 
+                    <span style="margin:0 15px">|</span> 
+                    <i class="fab fa-whatsapp" style="color:#0A2647;"></i> <span>+92 (WhatsApp on profile)</span>
+                </div>
+                <div>
+                    <i class="fab fa-linkedin" style="color:#0A2647; font-size:1.5rem;"></i> <a href="#" style="text-decoration:underline; color:#0A2647;">linkedin.com/in/anis-medventure</a>
+                    <span class="stat-note"> (CV available there)</span>
+                </div>
+            </div>
+            <div style="margin-top: 1.2rem; background:#f0f9ff; padding:0.8rem; border-radius: 40px; text-align:center;">
+                <i class="fas fa-file-pdf" style="color:#b22222;"></i> detailed CV in PDF – see LinkedIn / contact for portfolio
+            </div>
 
+            <!-- mission statement repeated as footer note -->
+            <footer>
+                <i class="fas fa-heart" style="color:#0A2647;"></i> student forever · public health awareness · © 2026 Mian Anis ur Rahman 
+                <br><span style="opacity:0.7;"><i class="fas fa-quote-left"></i> LET'S GO <i class="fas fa-quote-right"></i></span>
+            </footer>
+        </div> <!-- end content-card -->
+    </div> <!-- end navy-wrapper -->
+
+    <!-- tiny note: where to add profile pic -->
+    <div style="max-width:1200px; margin:0.5rem auto 1rem; background: #fcf9e9; padding:0.8rem 2rem; border-radius:80px; font-size:0.9rem; border:1px dashed #0A2647;">
+        ⚙️ <strong>image placement:</strong> put your profile picture as <code>images/profile.jpeg</code> (or replace path in img src). The logo icon is already embedded.
+    </div>
 </body>
 </html>
