@@ -17,7 +17,7 @@
 
         body {
             font-family: "Inter", system-ui, -apple-system, sans-serif;
-            background: #ffffff;  /* clean white background */
+            background: #ffffff;
             color: #1e293b;
             line-height: 1.5;
         }
@@ -76,7 +76,7 @@
             margin-right: 8px;
         }
 
-        /* profile area with big image */
+        /* profile area with big image and ENHANCED VISUALS */
         .profile-row {
             display: flex;
             align-items: center;
@@ -86,21 +86,94 @@
         }
 
         .avatar-wrapper {
+            position: relative;
             width: 220px;
             height: 220px;
+        }
+
+        /* MULTIPLE VISUAL EFFECTS AROUND PROFILE PICTURE */
+        .avatar-ring {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #e0edff, #ffffff);
+            background: linear-gradient(135deg, #0a2540, #3b82f6, #a78bfa, #0a2540);
+            background-size: 300% 300%;
+            animation: rotate-gradient 6s ease infinite, pulse-ring 2.5s ease infinite;
+            z-index: 1;
+            opacity: 0.7;
+        }
+
+        .avatar-ring-2 {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.3), transparent 70%);
+            filter: blur(8px);
+            animation: pulse-glow 3s ease infinite alternate;
+            z-index: 0;
+        }
+
+        .avatar-ring-3 {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            border: 3px dashed #3b82f6;
+            opacity: 0.5;
+            animation: spin-slow 12s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes rotate-gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        @keyframes pulse-glow {
+            0% { opacity: 0.3; filter: blur(8px); }
+            100% { opacity: 0.7; filter: blur(12px); }
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .avatar-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: white;
             padding: 5px;
-            box-shadow: 0 20px 30px -10px rgba(0, 70, 150, 0.2);
+            box-shadow: 0 20px 30px -10px rgba(0, 70, 150, 0.3);
+            z-index: 3;
         }
 
         .avatar-img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: cover;  /* This ensures full face fits perfectly */
+            object-position: center; /* Centers the face */
             border: 4px solid white;
             background: #e2e8f0;
+            display: block;
         }
 
         .name-section h1 {
@@ -109,6 +182,7 @@
             letter-spacing: -0.02em;
             color: #0a2540;
             line-height: 1.1;
+            text-transform: capitalize; /* First letters capital */
         }
 
         .name-section .subhead {
@@ -127,9 +201,10 @@
             border-radius: 60px;
             font-weight: 500;
             color: #0a2540;
+            text-transform: capitalize;
         }
 
-        /* section headers */
+        /* section headers - capitalized */
         .section-title {
             display: flex;
             align-items: center;
@@ -153,6 +228,7 @@
             font-size: 2.2rem;
             font-weight: 600;
             color: #0a2540;
+            text-transform: capitalize; /* First letters capital */
         }
 
         /* about block */
@@ -164,6 +240,11 @@
             font-size: 1.2rem;
             color: #1e3a5f;
             box-shadow: 0 10px 20px -10px rgba(0,0,0,0.05);
+            text-transform: capitalize; /* First letters capital */
+        }
+
+        .about-block strong {
+            text-transform: capitalize;
         }
 
         /* grid cards */
@@ -199,6 +280,11 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-transform: capitalize; /* First letters capital in bullets */
+        }
+
+        .info-card p i {
+            text-transform: none; /* icons unaffected */
         }
 
         .info-card h3 {
@@ -208,6 +294,7 @@
             margin-bottom: 1.2rem;
             border-bottom: 2px solid #ddeeff;
             padding-bottom: 0.5rem;
+            text-transform: capitalize; /* First letters capital */
         }
 
         .skill-tags {
@@ -224,6 +311,7 @@
             border-radius: 40px;
             font-size: 0.9rem;
             font-weight: 500;
+            text-transform: capitalize; /* First letters capital */
         }
 
         /* social buttons */
@@ -248,10 +336,12 @@
             transition: all 0.15s;
             font-size: 1rem;
             box-shadow: 0 4px 10px -5px rgba(0,0,0,0.05);
+            text-transform: capitalize;
         }
 
         .social-btn i {
             font-size: 1.5rem;
+            text-transform: none;
         }
 
         .social-btn:hover {
@@ -293,9 +383,14 @@
             font-size: 1.3rem;
             display: block;
             color: #0a2540;
+            text-transform: capitalize; /* First letters capital */
         }
 
-        /* TEAM SECTION - NEW */
+        .achievement-card small {
+            text-transform: capitalize;
+        }
+
+        /* TEAM SECTION */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -327,6 +422,7 @@
             border: 4px solid white;
             box-shadow: 0 15px 20px -8px rgba(0, 40, 80, 0.2);
             background: #eef4fc;
+            overflow: hidden;
         }
 
         .team-pic img {
@@ -342,6 +438,7 @@
             font-weight: 700;
             color: #0a2540;
             margin-bottom: 0.2rem;
+            text-transform: capitalize;
         }
 
         .team-title {
@@ -349,6 +446,7 @@
             font-weight: 600;
             color: #2563eb;
             margin-bottom: 0.8rem;
+            text-transform: capitalize;
         }
 
         .team-desc {
@@ -356,6 +454,7 @@
             margin: 0.8rem 0;
             font-size: 0.95rem;
             padding: 0 0.5rem;
+            text-transform: capitalize;
         }
 
         .team-linkedin {
@@ -369,11 +468,13 @@
             font-weight: 500;
             border: 1px solid #b7d4ff;
             transition: 0.2s;
+            text-transform: capitalize;
         }
 
         .team-linkedin i {
             color: #0a66c2;
             margin-right: 6px;
+            text-transform: none;
         }
 
         .team-linkedin:hover {
@@ -402,6 +503,11 @@
             gap: 10px;
             color: #1e3a6b;
             text-decoration: none;
+            text-transform: lowercase; /* email stays lowercase */
+        }
+
+        .contact-item:first-child {
+            text-transform: lowercase; /* email */
         }
 
         footer {
@@ -411,6 +517,11 @@
             margin-top: 2.5rem;
             border-top: 1px solid #e5f0ff;
             padding-top: 2rem;
+            text-transform: capitalize;
+        }
+
+        footer i {
+            text-transform: none;
         }
 
         /* mobile adjustments */
@@ -433,77 +544,82 @@
                 <img src="images/logo.jpeg" alt="MEDVENTURE" class="real-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'180\' height=\'50\' viewBox=\'0 0 180 50\'%3E%3Crect width=\'180\' height=\'50\' fill=\'%230a2540\' rx=\'25\'/%3E%3Ctext x=\'35\' y=\'33\' font-family=\'Arial\' font-size=\'22\' fill=\'%23ffffff\' font-weight=\'bold\'%3EMEDVENTURE%3C/text%3E%3C/svg%3E'">
             </div>
             <div class="year-badge">
-                <i class="fas fa-calendar-alt"></i> final year · KMU · 2027
+                <i class="fas fa-calendar-alt"></i> Final Year · KMU · 2027
             </div>
         </div>
 
-        <!-- PROFILE big picture -->
+        <!-- PROFILE with ENHANCED VISUALS AROUND PICTURE -->
         <div class="profile-row">
             <div class="avatar-wrapper">
-                <!-- profile image: images/profile.jpeg (face visible) -->
-                <img src="images/profile.jpeg" alt="Mian Anis" class="avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Mian+Anis&size=400&background=0a2540&color=fff&bold=true'">
+                <div class="avatar-ring-2"></div>
+                <div class="avatar-ring"></div>
+                <div class="avatar-ring-3"></div>
+                <div class="avatar-frame">
+                    <!-- profile image: images/profile.jpeg (face visible now with object-fit: cover) -->
+                    <img src="images/profile.jpeg" alt="Mian Anis" class="avatar-img" onerror="this.src='https://ui-avatars.com/api/?name=Mian+Anis&size=400&background=0a2540&color=fff&bold=true'">
+                </div>
             </div>
             <div class="name-section">
-                <h1>Mian Anis ur Rahman</h1>
+                <h1>Mian Anis Ur Rahman</h1>
                 <div class="subhead">
-                    <span><i class="fas fa-graduation-cap" style="color:#0a2540;"></i> MBBS final year</span>
-                    <span class="pill"><i class="fas fa-stethoscope"></i> student forever</span>
+                    <span><i class="fas fa-graduation-cap" style="color:#0a2540;"></i> MBBS Final Year</span>
+                    <span class="pill"><i class="fas fa-stethoscope"></i> Student Forever</span>
                 </div>
             </div>
         </div>
 
-        <!-- ABOUT section (clean) -->
+        <!-- ABOUT section (capitalized) -->
         <div class="about-block">
             <i class="fas fa-quote-left" style="color:#0a2540; opacity:0.3; margin-right:10px;"></i>
-            anis.medventure — public health awareness, myth busting & medical education. 
-            Passionate about clinical practice. <strong>Career goal:</strong> to be a great student.
+            Anis.Medventure — Public Health Awareness, Myth Busting & Medical Education. 
+            Passionate About Clinical Practice. <strong>Career Goal:</strong> To Be A Great Student.
         </div>
 
         <!-- EDUCATION & CLINICAL side by side -->
         <div class="grid-2col">
             <div class="info-card">
-                <h3><i class="fas fa-university"></i> education</h3>
-                <p><i class="fas fa-check-circle"></i> MBBS (Medicine & Surgery) · final year</p>
+                <h3><i class="fas fa-university"></i> Education</h3>
+                <p><i class="fas fa-check-circle"></i> MBBS (Medicine & Surgery) · Final Year</p>
                 <p><i class="fas fa-check-circle"></i> Abbottabad Int'l Medical Institute</p>
                 <p><i class="fas fa-check-circle"></i> Khyber Medical University</p>
-                <p><i class="fas fa-check-circle"></i> Expected graduation 2027</p>
+                <p><i class="fas fa-check-circle"></i> Expected Graduation 2027</p>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-stethoscope"></i> clinical</h3>
-                <p><i class="fas fa-check-circle"></i> Internal Medicine rotation</p>
-                <p><i class="fas fa-check-circle"></i> Surgery rotation</p>
-                <p><i class="fas fa-check-circle"></i> Paediatrics rotation</p>
-                <p><i class="fas fa-check-circle"></i> Full details on LinkedIn</p>
+                <h3><i class="fas fa-stethoscope"></i> Clinical Experience</h3>
+                <p><i class="fas fa-check-circle"></i> Internal Medicine Rotation</p>
+                <p><i class="fas fa-check-circle"></i> Surgery Rotation</p>
+                <p><i class="fas fa-check-circle"></i> Paediatrics Rotation</p>
+                <p><i class="fas fa-check-circle"></i> Full Details On LinkedIn</p>
             </div>
         </div>
 
         <!-- CONTENT CREATION & ACHIEVEMENTS -->
         <div class="grid-2col">
             <div class="info-card">
-                <h3><i class="fas fa-video"></i> content</h3>
-                <p><i class="fas fa-check-circle"></i> public awareness · myth busting · meded</p>
-                <p><i class="fas fa-check-circle"></i> started 2026 · Instagram/YouTube</p>
+                <h3><i class="fas fa-video"></i> Content Creation</h3>
+                <p><i class="fas fa-check-circle"></i> Public Awareness · Myth Busting · Meded</p>
+                <p><i class="fas fa-check-circle"></i> Started 2026 · Instagram/YouTube</p>
                 <div class="skill-tags">
-                    <span class="skill-tag">reels</span>
-                    <span class="skill-tag">shorts</span>
-                    <span class="skill-tag">infographics</span>
+                    <span class="skill-tag">Reels</span>
+                    <span class="skill-tag">Shorts</span>
+                    <span class="skill-tag">Infographics</span>
                 </div>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-medal"></i> achievements</h3>
-                <p><i class="fas fa-check-circle"></i> leadership & teaching awards</p>
-                <p><i class="fas fa-check-circle"></i> great academic record (merit scholar)</p>
-                <p><i class="fas fa-check-circle"></i> research in progress</p>
+                <h3><i class="fas fa-medal"></i> Achievements</h3>
+                <p><i class="fas fa-check-circle"></i> Leadership & Teaching Awards</p>
+                <p><i class="fas fa-check-circle"></i> Great Academic Record (Merit Scholar)</p>
+                <p><i class="fas fa-check-circle"></i> Research In Progress</p>
             </div>
         </div>
 
         <!-- SOCIAL MEDIA LINKS -->
         <div class="section-title" style="margin-top:2rem;">
             <div class="section-icon"><i class="fas fa-share-alt"></i></div>
-            <h2>connect</h2>
+            <h2>Connect</h2>
         </div>
         <div class="social-row">
-            <a href="https://instagram.com/anis.medventure" target="_blank" class="social-btn instagram"><i class="fab fa-instagram" style="color:#d62976;"></i> anis.medventure</a>
+            <a href="https://instagram.com/anis.medventure" target="_blank" class="social-btn instagram"><i class="fab fa-instagram" style="color:#d62976;"></i> Anis.Medventure</a>
             <a href="https://facebook.com/profile.php?id=61581312958243" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f" style="color:#1877f2;"></i> Anis Medventure</a>
             <a href="https://youtube.com/@Anis.Medventure" target="_blank" class="social-btn youtube"><i class="fab fa-youtube" style="color:#ff0000;"></i> @Anis.Medventure</a>
             <a href="https://www.linkedin.com/in/mian-anis-ur-rahman/" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin" style="color:#0a66c2;"></i> LinkedIn</a>
@@ -511,15 +627,15 @@
 
         <!-- ACHIEVEMENTS extra flair -->
         <div class="achievement-strip">
-            <div class="achievement-card"><i class="fas fa-trophy"></i><strong>leadership</strong><small>teaching awards</small></div>
-            <div class="achievement-card"><i class="fas fa-star"></i><strong>merit scholar</strong><small>academic</small></div>
-            <div class="achievement-card"><i class="fas fa-flask"></i><strong>research</strong><small>ongoing</small></div>
+            <div class="achievement-card"><i class="fas fa-trophy"></i><strong>Leadership</strong><small>Teaching Awards</small></div>
+            <div class="achievement-card"><i class="fas fa-star"></i><strong>Merit Scholar</strong><small>Academic</small></div>
+            <div class="achievement-card"><i class="fas fa-flask"></i><strong>Research</strong><small>Ongoing</small></div>
         </div>
 
-        <!-- ========== TEAM / CONTRIBUTORS SECTION ========== -->
+        <!-- TEAM / CONTRIBUTORS SECTION -->
         <div class="section-title">
             <div class="section-icon"><i class="fas fa-users"></i></div>
-            <h2>the crew</h2>
+            <h2>The Crew</h2>
         </div>
 
         <div class="team-grid">
@@ -530,33 +646,33 @@
                     <img src="images/person1.jpeg" alt="Mian Husnain" onerror="this.src='https://ui-avatars.com/api/?name=Mian+Husnain&size=200&background=2d4b7c&color=fff'">
                 </div>
                 <h3>Mian Husnain</h3>
-                <div class="team-title">Media manager</div>
-                <div class="team-desc">Bachelor of Media and Communication Studies</div>
+                <div class="team-title">Media Manager</div>
+                <div class="team-desc">Bachelor Of Media And Communication Studies</div>
                 <a href="https://www.linkedin.com/in/mian-husnain1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="team-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
 
-            <!-- PERSON 2: Zainab Ishaq (Tech Advisor / Full Stack Dev) -->
+            <!-- PERSON 2: Zainab Ishaq -->
             <div class="team-card">
                 <div class="team-pic">
-                    <!-- image: images/person2.jpg (or .jpeg) -->
+                    <!-- image: images/person2.jpg -->
                     <img src="images/person2.jpg" alt="Zainab Ishaq" onerror="this.src='https://ui-avatars.com/api/?name=Zainab+Ishaq&size=200&background=5a3d7c&color=fff'">
                 </div>
                 <h3>Zainab Ishaq</h3>
                 <div class="team-title">Tech Advisor & Full Stack Developer</div>
-                <div class="team-desc">Mobile and Web App Developer · builds the tech</div>
+                <div class="team-desc">Mobile And Web App Developer · Builds The Tech</div>
                 <a href="https://www.linkedin.com/in/zainab-ishaq-60a601268/" target="_blank" class="team-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
 
-        <!-- CONTACT STRIP (clean, no helper) -->
+        <!-- CONTACT STRIP -->
         <div class="contact-strip">
             <span class="contact-item"><i class="fas fa-envelope" style="color:#0a2540;"></i> anis.medventure@gmail.com</span>
-            <span class="contact-item"><i class="fab fa-whatsapp" style="color:#0a2540;"></i> WhatsApp (on profile)</span>
-            <span class="contact-item"><i class="fab fa-linkedin" style="color:#0a2540;"></i> /in/mian-anis-ur-rahman</span>
+            <span class="contact-item"><i class="fab fa-whatsapp" style="color:#0a2540;"></i> WhatsApp (On Profile)</span>
+            <span class="contact-item"><i class="fab fa-linkedin" style="color:#0a2540;"></i> /In/Mian-Anis-Ur-Rahman</span>
         </div>
 
         <footer>
-            <i class="fas fa-heart" style="color:#0a2540;"></i> public health awareness · medical education · © 2026 Mian Anis & team
+            <i class="fas fa-heart" style="color:#0a2540;"></i> Public Health Awareness · Medical Education · © 2026 Mian Anis & Team
         </footer>
     </div> <!-- end card -->
 </div> <!-- end container -->
