@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mian Anis · Medventure Team</title>
+    
+    <!-- SEO Meta Tags - Optimized for search engines -->
+    <title>Mian Anis ur Rahman · Founder of Medventure | Medical Education & Public Health</title>
+    <meta name="description" content="Mian Anis ur Rahman, Founder and Organizer of Medventure. Final year MBBS student at Khyber Medical University, topper, researcher, and medical education content creator. Public health awareness, myth busting, and clinical excellence.">
+    <meta name="keywords" content="Mian Anis, Medventure, medical education, MBBS, Khyber Medical University, Abbottabad, public health, myth busting, medical content creator, healthcare awareness, clinical education, research, leadership in medicine">
+    <meta name="author" content="Mian Anis ur Rahman">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://anis.medventure.com">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Mian Anis ur Rahman · Founder of Medventure">
+    <meta property="og:description" content="Medical education, public health awareness, and myth busting. Final year MBBS student, researcher, and content creator.">
+    <meta property="og:image" content="images/profile.jpeg">
+    <meta property="og:url" content="https://anis.medventure.com">
+    <meta property="og:type" content="website">
+    
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Google Fonts: Inter for modern look -->
@@ -43,7 +58,7 @@
             50% { transform: translateY(-5px); }
         }
 
-        /* logo row */
+        /* logo row - with circular logo frame */
         .logo-section {
             display: flex;
             justify-content: space-between;
@@ -60,17 +75,32 @@
             gap: 1rem;
         }
 
+        /* CIRCULAR LOGO FRAME - FIXED BLURRY ISSUE */
+        .logo-frame {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a2540, #1e3a8a);
+            padding: 3px;
+            box-shadow: 0 10px 20px -5px rgba(0, 30, 60, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .real-logo {
-            height: 60px;
-            width: auto;
-            max-width: 200px;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0, 60, 130, 0.1));
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover; /* Ensures logo fills circle without blur */
+            border: 2px solid white;
+            background: white;
             transition: transform 0.3s ease;
+            image-rendering: crisp-edges; /* Sharper image */
         }
 
         .real-logo:hover {
-            transform: scale(1.05) rotate(2deg);
+            transform: scale(1.08) rotate(2deg);
         }
 
         .year-badge {
@@ -106,7 +136,7 @@
 
         .avatar-wrapper {
             position: relative;
-            width: 240px;  /* slightly bigger for better visibility */
+            width: 240px;
             height: 240px;
         }
 
@@ -182,18 +212,15 @@
             padding: 6px;
             box-shadow: 0 20px 30px -10px rgba(0, 70, 150, 0.3);
             z-index: 3;
-            overflow: hidden; /* Ensures image stays within circle */
+            overflow: hidden;
         }
 
-        /* CRITICAL FIX FOR FACE VISIBILITY */
         .avatar-img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            object-fit: cover;  /* This ensures full coverage */
-            object-position: center 40%; /* Adjust this value to center the face */
-            /* If face is still hidden, try: object-position: center 30%; */
-            /* or object-position: center 10%; depending on image */
+            object-fit: cover;
+            object-position: center 20%;
             border: 4px solid white;
             background: #e2e8f0;
             display: block;
@@ -203,9 +230,6 @@
         .avatar-img:hover {
             transform: scale(1.05);
         }
-
-        /* FACE VISIBILITY TIP - if face still hidden, use inline style to adjust */
-        /* You can add style="object-position: center 25%;" to the img tag */
 
         .name-section h1 {
             font-size: 4rem;
@@ -505,7 +529,7 @@
             transform: scale(1.2) rotate(5deg);
         }
 
-        /* achievement mini cards */
+        /* achievement mini cards - UPDATED */
         .achievement-strip {
             display: flex;
             flex-wrap: wrap;
@@ -620,7 +644,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            object-position: center 30%; /* FIXED: Adjusted for better face visibility */
+            object-position: center 30%;
             background: #dbe7f5;
             transition: transform 0.3s ease;
         }
@@ -808,96 +832,126 @@
         }
 
         /* FACE VISIBILITY HELPER - you can adjust these values */
-        /* If face still not visible, try different object-position values */
         .face-adjust-top {
-            object-position: center 15%; /* moves image up */
+            object-position: center 15%;
         }
         .face-adjust-bottom {
-            object-position: center 30%; /* moves image down */
+            object-position: center 30%;
         }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="card">
-        <!-- LOGO with real image -->
+        <!-- LOGO with circular frame - bigger and clearer -->
         <div class="logo-section">
             <div class="logo-box">
-                <!-- place images/logo.jpeg -->
-                <img src="images/logo.jpeg" alt="MEDVENTURE" class="real-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'180\' height=\'50\' viewBox=\'0 0 180 50\'%3E%3Crect width=\'180\' height=\'50\' fill=\'%230a2540\' rx=\'25\'/%3E%3Ctext x=\'35\' y=\'33\' font-family=\'Arial\' font-size=\'22\' fill=\'%23ffffff\' font-weight=\'bold\'%3EMEDVENTURE%3C/text%3E%3C/svg%3E'">
+                <div class="logo-frame">
+                    <img src="images/logo.jpeg" alt="MEDVENTURE" class="real-logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'50\' fill=\'%230a2540\'/%3E%3Ctext x=\'28\' y=\'68\' font-family=\'Arial\' font-size=\'28\' fill=\'%23ffffff\' font-weight=\'bold\'%3EM%3C/text%3E%3C/svg%3E'">
+                </div>
             </div>
             <div class="year-badge">
                 <i class="fas fa-calendar-alt"></i> Final Year · AIMI · 2027
             </div>
         </div>
 
-        <!-- PROFILE with FACE VISIBILITY FIX -->
+        <!-- PROFILE with FOUNDER TITLE ADDED -->
         <div class="profile-row">
             <div class="avatar-wrapper">
                 <div class="avatar-ring-2"></div>
                 <div class="avatar-ring"></div>
                 <div class="avatar-ring-3"></div>
                 <div class="avatar-frame">
-                    <!-- 
-                        CRITICAL FACE FIX: 
-                        Adjust object-position value until face is perfectly visible
-                        Try: center 10% (moves up), center 30% (moves down), center 20% (default)
-                        If image is too zoomed, adjust object-fit to 'contain' but will show white space
-                    -->
-                    <img src="images/profile.jpeg" alt="Mian Anis" class="avatar-img" style="object-position: center 20%;" onerror="this.src='https://ui-avatars.com/api/?name=Mian+Anis&size=400&background=0a2540&color=fff&bold=true'">
+                    <img src="images/profile.jpeg" alt="Mian Anis ur Rahman - Founder of Medventure" class="avatar-img" style="object-position: center 20%;" onerror="this.src='https://ui-avatars.com/api/?name=Mian+Anis&size=400&background=0a2540&color=fff&bold=true'">
                 </div>
             </div>
             <div class="name-section">
                 <h1>Mian Anis Ur Rahman</h1>
                 <div class="subhead">
-                    <span><i class="fas fa-graduation-cap" style="color:#0a2540;"></i> MBBS Final Year</span>
-                    <span class="pill"><i class="fas fa-stethoscope"></i> Student Forever</span>
+                    <span><i class="fas fa-crown" style="color:#0a2540;"></i> Founder & Organizer · Medventure</span>
+                    <span class="pill"><i class="fas fa-stethoscope"></i> MBBS Final Year</span>
                 </div>
             </div>
         </div>
 
-        <!-- ABOUT section -->
+        <!-- ABOUT section - kept same -->
         <div class="about-block">
             <i class="fas fa-quote-left" style="color:#0a2540; opacity:0.3; margin-right:10px;"></i>
             Anis.Medventure — Public Health Awareness, Myth Busting & Medical Education. 
             <strong>Career Goal:</strong> To Be A Great Student.
         </div>
 
-        <!-- EDUCATION & CLINICAL -->
+        <!-- EDUCATION - Updated with CV data (2026 version) -->
         <div class="grid-2col">
             <div class="info-card">
                 <h3><i class="fas fa-university"></i> Education</h3>
-                <p><i class="fas fa-check-circle"></i> MBBS (Medicine & Surgery) · Final Year</p>
-                <p><i class="fas fa-check-circle"></i> Abbottabad Int'l Medical Institute</p>
-                <p><i class="fas fa-check-circle"></i> Khyber Medical University</p>
-                <p><i class="fas fa-check-circle"></i> Expected Graduation 2027</p>
+                <p><i class="fas fa-check-circle"></i> MBBS (Medicine & Surgery) · Final Year · 2022-2027</p>
+                <p><i class="fas fa-check-circle"></i> Abbottabad International Medical Institute</p>
+                <p><i class="fas fa-check-circle"></i> Khyber Medical University · Top 5% of class</p>
+                <p><i class="fas fa-check-circle"></i> GCE Advanced Level (A Levels) · 2021 · Army Burn Hall College</p>
+                <p><i class="fas fa-check-circle"></i> GCE Ordinary Level (O Levels) · 2019 · Army Burn Hall College</p>
+                <p><i class="fas fa-check-circle"></i> Ranked in Top 10 in Provincial MBBS Examinations (2024, 2025)</p>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-stethoscope"></i> Clinical Experience</h3>
-                <p><i class="fas fa-check-circle"></i> Internal Medicine Rotation</p>
-                <p><i class="fas fa-check-circle"></i> Surgery Rotation</p>
-                <p><i class="fas fa-check-circle"></i> Paediatrics Rotation</p>
-                <p><i class="fas fa-check-circle"></i> Full Details On LinkedIn</p>
+                <h3><i class="fas fa-stethoscope"></i> Clinical Experience & Electives</h3>
+                <p><i class="fas fa-check-circle"></i> Clinical Rotations in Surgical, Medical & Allied Disciplines · 2023-Present</p>
+                <p><i class="fas fa-check-circle"></i> Elective Rotation · Neurology · Shifa International Hospital, Islamabad · 2025</p>
+                <p><i class="fas fa-check-circle"></i> Advanced Clinical Training · Internal Medicine · 2026</p>
+                <p><i class="fas fa-check-circle"></i> Patient Care & History Taking · 1000+ patient interactions</p>
             </div>
         </div>
 
-        <!-- CONTENT CREATION & ACHIEVEMENTS -->
+        <!-- LEADERSHIP & RESEARCH - New sections from CV -->
         <div class="grid-2col">
             <div class="info-card">
-                <h3><i class="fas fa-video"></i> Content Creation</h3>
-                <p><i class="fas fa-check-circle"></i> Public Awareness · Myth Busting · Meded</p>
-                <p><i class="fas fa-check-circle"></i> Started 2026 · Instagram/YouTube/Facebook</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Reels</span>
-                    <span class="skill-tag">Shorts</span>
-                    <span class="skill-tag">Infographics</span>
-                </div>
+                <h3><i class="fas fa-users"></i> Leadership & Extracurricular</h3>
+                <p><i class="fas fa-check-circle"></i> Batch Leader for Clinical, Research & Practical Batches · 2022-Present</p>
+                <p><i class="fas fa-check-circle"></i> Mentoring & Teaching · Peers & Junior Fellows</p>
+                <p><i class="fas fa-check-circle"></i> Vice President · English Literary Society · 2020-2021</p>
+                <p><i class="fas fa-check-circle"></i> Winner · National & Intercollege Bilingual Declamation Contests</p>
+                <p><i class="fas fa-check-circle"></i> Sports Recognition · Football & Hockey (School & College Level)</p>
+                <p><i class="fas fa-check-circle"></i> Original Writings · School & College Magazines</p>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-medal"></i> Achievements</h3>
-                <p><i class="fas fa-check-circle"></i> Leadership & Teaching Awards</p>
-                <p><i class="fas fa-check-circle"></i> Great Academic Record (Merit Student)</p>
-                <p><i class="fas fa-check-circle"></i> Research In Progress</p>
+                <h3><i class="fas fa-microscope"></i> Research & Conferences</h3>
+                <p><i class="fas fa-check-circle"></i> Research Conference on Clinical Trials in AI · SCOPE · Shifa Hospital · 2025</p>
+                <p><i class="fas fa-check-circle"></i> Study on Frequency of Low Birth Weight (LBW) · Teaching Hospital · 2025</p>
+                <p><i class="fas fa-check-circle"></i> Assessment of Leadership Skills in Medical Students · Ongoing 2026</p>
+                <p><i class="fas fa-check-circle"></i> Regular Participant · Research Training Sessions · 2024-2026</p>
+                <p><i class="fas fa-check-circle"></i> 2 Research Papers in Progress · Medical Education & Public Health</p>
+            </div>
+        </div>
+
+        <!-- HONORS & SKILLS -->
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3><i class="fas fa-medal"></i> Honors & Achievements</h3>
+                <p><i class="fas fa-check-circle"></i> Academic Distinction Throughout School, College & Medical Education</p>
+                <p><i class="fas fa-check-circle"></i> Ranked Top 10 in Provincial MBBS Examinations · Twice (2024, 2025)</p>
+                <p><i class="fas fa-check-circle"></i> College Topper · Multiple Academic Sessions</p>
+                <p><i class="fas fa-check-circle"></i> Multiple Awards in Debating & Public Speaking</p>
+                <p><i class="fas fa-check-circle"></i> Medals & Certificates for Academic Excellence</p>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-code"></i> Skills</h3>
+                <p><i class="fas fa-check-circle"></i> Clinical: History Taking · Physical Exam · Patient Care</p>
+                <p><i class="fas fa-check-circle"></i> Research: Literature Review · Data Collection · Academic Writing</p>
+                <p><i class="fas fa-check-circle"></i> Professional: Leadership · Teamwork · Communication · Teaching</p>
+                <p><i class="fas fa-check-circle"></i> Languages: English (Fluent) · Urdu (Fluent) · Hindko (Native) · Gojri (Native) · Arabic (Basic)</p>
+            </div>
+        </div>
+
+        <!-- INTERESTS - New section from CV -->
+        <div class="info-card" style="margin: 1.5rem 0;">
+            <h3><i class="fas fa-heart"></i> Interests</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span class="skill-tag">Patient Care & Clinical Excellence</span>
+                <span class="skill-tag">Medical Writing</span>
+                <span class="skill-tag">Public Speaking</span>
+                <span class="skill-tag">Leadership</span>
+                <span class="skill-tag">Hiking & Exploring</span>
+                <span class="skill-tag">Medical Education</span>
+                <span class="skill-tag">Myth Busting</span>
             </div>
         </div>
 
@@ -913,11 +967,11 @@
             <a href="https://www.linkedin.com/in/mian-anis-ur-rahman/" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin" style="color:#0a66c2;"></i> LinkedIn</a>
         </div>
 
-        <!-- ACHIEVEMENTS extra -->
+        <!-- ACHIEVEMENTS extra - REMOVED RESEARCH, ADDED SOMETHING ELSE -->
         <div class="achievement-strip">
             <div class="achievement-card"><i class="fas fa-trophy"></i><strong>Leadership</strong><small>Teaching Awards</small></div>
-            <div class="achievement-card"><i class="fas fa-star"></i><strong>Merit Scholar</strong><small>Academic</small></div>
-            <div class="achievement-card"><i class="fas fa-flask"></i><strong>Research</strong><small>Ongoing</small></div>
+            <div class="achievement-card"><i class="fas fa-star"></i><strong>Merit Scholar</strong><small>Top 10 Provincial</small></div>
+            <div class="achievement-card"><i class="fas fa-microphone"></i><strong>Debating</strong><small>National Winner</small></div>
         </div>
 
         <!-- TEAM SECTION -->
@@ -938,14 +992,14 @@
                 <a href="https://www.linkedin.com/in/mian-husnain1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="team-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
 
-            <!-- PERSON 2: Zainab Ishaq -->
+            <!-- PERSON 2: Zainab Ishaq - NEW TITLE -->
             <div class="team-card">
                 <div class="team-pic">
                     <img src="images/person2.jpg" alt="Zainab Ishaq" onerror="this.src='https://ui-avatars.com/api/?name=Zainab+Ishaq&size=200&background=5a3d7c&color=fff'">
                 </div>
                 <h3>Zainab Ishaq</h3>
-                <div class="team-title">Tech Advisor</div>
-                <div class="team-desc">Full Stack Mobile And Web App Developer</div>
+                <div class="team-title">Digital Architect & Full Stack Developer</div>
+                <div class="team-desc">Web & Mobile App Development · Tech Infrastructure</div>
                 <a href="https://www.linkedin.com/in/zainab-ishaq-60a601268/" target="_blank" class="team-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
@@ -958,12 +1012,9 @@
         </div>
 
         <footer>
-            <i class="fas fa-heart" style="color:#0a2540;"></i> Public Health Awareness · Medical Education · © 2026 Mian Anis & Team
+            <i class="fas fa-heart" style="color:#0a2540;"></i> Public Health Awareness · Medical Education · © 2026 Mian Anis & Team · Anis.Medventure
         </footer>
     </div> <!-- end card -->
 </div> <!-- end container -->
-
-
-
 </body>
 </html>
